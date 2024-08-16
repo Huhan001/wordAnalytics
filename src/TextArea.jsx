@@ -5,7 +5,7 @@ import {Warning} from "./Warning.jsx";
 export const TextArea = () => {
   const [text, setText] = useState("");
 //  const [raiseWarning, setWarning] = useState(false);
-  const [warningMesage, setMesage] = useState('');
+  const [warnMesage, SetMesage] = useState('');
 
 
   const ProcessText = (change) => {
@@ -21,48 +21,17 @@ export const TextArea = () => {
   }
 
 
-  const checkRaiseWarningMesage = (change) => {
-    if (change.includes("@")) {
-      setMesage("character @ not supported");
-      change = change.replace("@", "");
-//      setWarning(true);
-    } else if (change.includes("#")) {
-      setMesage("character # not supported");
-      change = change.replace("#", "");
-//      setWarning(true);
-    } else if (change.includes("~")) {
-      setMesage("character ~ not supported");
-      change = change.replace("~", "");
-//      setWarning(true);
-    } else if (change.includes(">")) {
-      setMesage("character > not supported");
-      change = change.replace(">", "");
-//      setWarning(true);
-    } else if (change.includes("^")) {
-      setMesage("character ~ not supported");
-      change = change.replace("^", "");
-//      setWarning(true);
-    } else if (change.includes("**")) {
-      setMesage("character ** not supported");
-      change = change.replace("**", "");
-//      setWarning(true);
-    }
-
-    setText(change);
-  }
-
-
-
   const PassText = (event) => {
     let changedEvent = event.target.value;
 
-//    const donts = ["@", "#", "<", ">", "**", "^", "~"];
+    const donts = ["@", "#", "<", ">", "**", "^", "~"];
 //    setWarning(donts.some(x => changedEvent.includes(x)));
-//
-//    changedEvent = ProcessText(changedEvent);
-    checkRaiseWarningMesage(changedEvent);
-//    setText(changedEvent);
 
+    let chars = donts.find(char => changedEvent.includes(char)) ?? null;
+    SetMesage(chars && `character ${chars} not supported`)
+
+    changedEvent = ProcessText(changedEvent);
+    setText(changedEvent);
   };
 
   return (
@@ -73,10 +42,7 @@ export const TextArea = () => {
           placeholder="Type something..."
           spellCheck="false"
         />
-        {/*option 1*/}
-        {/*{text.includes('<string') && <Warning />}*/}
-        {/*{raiseWarning && <Warning/>}*/}
-        {warningMesage && <Warning warningMesage ={warningMesage}/>}
+        <Warning warnMesage ={warnMesage}/>
     </div>
   );
 };
