@@ -1,4 +1,4 @@
-import style from "./Application.module.css";
+import style from "../style/Application.module.css";
 
 export const BackgroundImage = () => {
   return <div className={style.bg} />;
