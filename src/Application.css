@@ -111,7 +111,7 @@
     border-left: 1px solid rgba(0, 0, 0, 0.08);
   }
   
-  .stat_number {
+  .stat__number {
     color: #4d5457;
     font-weight: 600;
     font-size: 35px;
@@ -122,7 +122,7 @@
     color: red;
   }
   
-  .second_heading {
+  .second-heading {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;

@@ -2,14 +2,12 @@ import {useState} from "react";
 import style from "./Application.module.css";
 import {Warning} from "./Warning.jsx";
 
-export const TextArea = () => {
-  const [text, setText] = useState("");
-//  const [raiseWarning, setWarning] = useState(false);
+export const TextArea = ({text, setText}) => {
   const [warnMesage, SetMesage] = useState('');
 
-
   const ProcessText = (change) => {
-  //  updating logic
+
+    //  updating logic replace(/[@#<>^~*]/g, "")
     change = change.includes('@') ? change.replace('@', "") : change;
     change = change.includes('#') ? change.replace('#', "") : change;
     change = change.includes('<') ? change.replace('<', "") : change;
@@ -17,6 +15,7 @@ export const TextArea = () => {
     change = change.includes('~') ? change.replace('~', "") : change;
     change = change.includes('^') ? change.replace('^', "") : change;
     change = change.includes('**') ? change.replace('**', "") : change;
+
     return change;
   }
 
