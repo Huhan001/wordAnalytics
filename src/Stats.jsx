@@ -1,20 +1,21 @@
 import style from "./Application.module.css";
 
-export const Stats = ({text}) => {
+export const Stats = ({Metrics}) => {
+//  passing the wrong parameter name will result to failure to return
   return (
     <section className={style.stats}>
-      <Statistics label = 'Word' counts = {text ? text.split(' ').length : 0}/>
-      <Statistics label = 'Character' counts = {text.length}/>
-      <Statistics label = 'Instagram' counts = {280 - text.length}/>
-      <Statistics label = 'Facebook' counts = {2200 - text.length}/>
+      <Statistics label = 'Word' counts = {Metrics.words}/>
+      <Statistics label = 'Character' counts = {Metrics.Character}/>
+      <Statistics label = 'Instagram' counts = {Metrics.Instagram}/>
+      <Statistics label = 'Facebook' counts = {Metrics.facebook}/>
     </section>
   )
 };
 
 const Statistics = ({label, counts}) => {
-  return (
-    <section className={style.stat}>
-      <span className={style.stat_number}> {counts} </span>
+    return (
+      <section className={style.stat}>
+        <span className={counts < 0 ? style.stat_number_limit : style.stat_number}> {counts} </span>
       <h2 className={style.second_heading}> {label} </h2>
     </section>
   )

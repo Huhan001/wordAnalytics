@@ -118,8 +118,11 @@
     margin-bottom: 10px;
   }
   
-  .stat__number--limit {
+  .stat_number_limit {
     color: red;
+    font-weight: 600;
+    font-size: 35px;
+    margin-bottom: 10px;
   }
   
   .second_heading {
